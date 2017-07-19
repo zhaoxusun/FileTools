@@ -9,7 +9,7 @@ public class Test {
         FileFactory fileFactory = new FileFactory();
         //FileCommonUtil fileCommonUtil = fileFactory.createFile("test.xlsx");
 
-        fileFactory.transformFile("test2.xlsx","test.xlsx");
+        fileFactory.transformFile("test2.xls","test.xls");
 
     }
 
