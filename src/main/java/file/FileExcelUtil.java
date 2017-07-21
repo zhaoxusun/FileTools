@@ -113,90 +113,67 @@ public class FileExcelUtil extends FileCommonUtil{
     @Override
     public FileContent readFileContent() {
         if (new File(filePath+fileName).exists()) {
-            if (fileName.endsWith("xls")) {
-                Workbook book = null;
-                Sheet sheet = null;
-                try {
-                    book = Workbook.getWorkbook(new File(filePath+fileName));
-                    sheet = book.getSheet(0);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                int rowCount = sheet.getRows();
-                int columnCount = sheet.getColumns();
-                for (int rowNum = 0; rowNum < rowCount; rowNum++) {
-                    ArrayList contextByRow = new ArrayList();
-                    for (int columnNum = 0; columnNum < columnCount; columnNum++) {
-                        //jar包中row和column是反的
-                        contextByRow.add(sheet.getCell(columnNum, rowNum).getContents());
-                    }
-                    fileContent.addContentBodyInfo(rowNum, contextByRow);
-                }
-                return fileContent;
-            } else if (fileName.endsWith("xlsx")) {
-                XSSFWorkbook xssfWorkbook = null;
-                XSSFSheet xssfSheet = null;
-                InputStream is = null;
-                try {
-                    is = new FileInputStream(filePath+fileName);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    xssfWorkbook = new XSSFWorkbook(is);
-                    xssfSheet = xssfWorkbook.getSheetAt(0);
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                int rowCount = xssfSheet.getLastRowNum()+1;
-                int columnCount = xssfSheet.getRow(0).getPhysicalNumberOfCells();
-                for (int rowNum=0;rowNum<rowCount;rowNum++){
-                    ArrayList contextByRow = new ArrayList();
-                    for (int columnNum=0;columnNum<columnCount;columnNum++) {
-                        contextByRow.add(xssfSheet.getRow(rowNum).getCell(columnNum));
-                    }
-                    fileContent.addContentBodyInfo(rowNum,contextByRow);
-                }
-                return fileContent;
-            } else{
 
+        }else {
+
+        }
+        if (fileName.endsWith("xls")) {
+            Workbook book = null;
+            Sheet sheet = null;
+            try {
+                book = Workbook.getWorkbook(new File(filePath+fileName));
+                sheet = book.getSheet(0);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } else {
+            int rowCount = sheet.getRows();
+            int columnCount = sheet.getColumns();
+            for (int rowNum = 0; rowNum < rowCount; rowNum++) {
+                ArrayList contentByRow = new ArrayList();
+                for (int columnNum = 0; columnNum < columnCount; columnNum++) {
+                    //jar包中row和column是反的
+                    contentByRow.add(sheet.getCell(columnNum, rowNum).getContents());
+                }
+                fileContent.addContentBodyInfo(rowNum, contentByRow);
+            }
+            return fileContent;
+        } else if (fileName.endsWith("xlsx")) {
+            XSSFWorkbook xssfWorkbook = null;
+            XSSFSheet xssfSheet = null;
+            InputStream is = null;
+            try {
+                is = new FileInputStream(filePath+fileName);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            try {
+                xssfWorkbook = new XSSFWorkbook(is);
+                xssfSheet = xssfWorkbook.getSheetAt(0);
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            int rowCount = xssfSheet.getLastRowNum()+1;
+            int columnCount = xssfSheet.getRow(0).getPhysicalNumberOfCells();
+            for (int rowNum=0;rowNum<rowCount;rowNum++){
+                ArrayList contentByRow = new ArrayList();
+                for (int columnNum=0;columnNum<columnCount;columnNum++) {
+                    contentByRow.add(xssfSheet.getRow(rowNum).getCell(columnNum));
+                }
+                fileContent.addContentBodyInfo(rowNum,contentByRow);
+            }
+            return fileContent;
+        } else{
 
         }
         return fileContent;
     }
 
-    public void removeFileContent(){
-        System.out.println(fileName);
-        System.out.println(filePath);
-        if (fileName.endsWith("xls")) {
-            HSSFWorkbook workbook = null;
-            try {
-                workbook = new HSSFWorkbook(new FileInputStream(new File(filePath + fileName)));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            for (int i=0;i<workbook.getNumberOfSheets();i++){
-                System.out.println(i);
-                workbook.removeSheetAt(i);
-            }
-        }else if (fileName.endsWith("xlsx")){
-            XSSFWorkbook xssfWorkbook = null;
-            try {
-                xssfWorkbook = new XSSFWorkbook(new FileInputStream(new File(filePath + fileName)));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            for (int i=0;i<xssfWorkbook.getNumberOfSheets();i++){
-                xssfWorkbook.removeSheetAt(i);
-            }
-        }
-    }
+
 
     public static void main(String[] args) {
-        new FileExcelUtil("test.xls").removeFileContent();
+
+
     }
 
 }
