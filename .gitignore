@@ -12,4 +12,7 @@
 *.tar.gz
 *.rar
 
-
+/target/
+/.settings/
+/.project
+/.classpath
