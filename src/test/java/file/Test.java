@@ -9,7 +9,7 @@ public class Test {
         FileFactory fileFactory = new FileFactory();
 
         //fileFactory.transformFile("test2.xls","test.xls");
-        fileFactory.transformFile("test13.txt","test.xlsx");
+        fileFactory.transformFile("test.txt","test.xml");
 
 
     }
