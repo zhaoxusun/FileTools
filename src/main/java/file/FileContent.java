@@ -8,6 +8,10 @@ import java.util.TreeMap;
  */
 public class FileContent {
     /**
+     * content名字（case名字）
+     */
+    private String contentName;
+    /**
      * content编码方式
      */
     private String contentCodeType;
@@ -80,5 +84,21 @@ public class FileContent {
      */
     public int getContentBodyInfoCount(){
         return this.contentBodyInfoCount;
+    }
+
+    /**
+     * 设置contentName（case名字）
+     * @param contentName
+     */
+    public void setContentName(String contentName){
+        this.contentName = contentName;
+    }
+
+    /**
+     * 获取contentName（case名字）
+     * @return
+     */
+    public String getContentName(){
+        return this.contentName;
     }
 }

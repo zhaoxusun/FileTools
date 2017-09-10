@@ -8,8 +8,8 @@ public class Test {
     public void testFileUtil(){
         FileFactory fileFactory = new FileFactory();
 
-        //fileFactory.transformFile("test2.xls","test.xls");
-        fileFactory.transformFile("test.txt","test.xml");
+        fileFactory.transformFile("test2.xml","test.txt");
+        //fileFactory.transformFile("test.xml","test2.xml");
 
 
     }
