@@ -12,10 +12,6 @@ public class FileContent {
      */
     private String contentCodeType;
     /**
-     * content头部
-     */
-    private String contentHeader;
-    /**
      * content主体
      */
     private TreeMap<Integer ,ArrayList> contentBody;
@@ -23,10 +19,6 @@ public class FileContent {
      * content主体信息条数
      */
     private int contentBodyInfoCount;
-    /**
-     * content尾部
-     */
-    private String contentFooter;
     /**
      * contentBody属性值
      */
@@ -38,10 +30,10 @@ public class FileContent {
     }
     /**
      * 设置contentBody的属性值
-     * @param contentBodyKey
+     * contentBody第一个list就是contentKey
      */
-    public void setContentBodyKey(ArrayList contentBodyKey){
-        this.contentBodyKey = contentBodyKey;
+    public void setContentBodyKey(){
+        contentBodyKey = contentBody.get(0);
     }
     /**
      * 获取contentBody的属性值
