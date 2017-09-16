@@ -52,9 +52,15 @@ public class FileJsonUtil extends FileCommonUtil {
                     for (int j=0;j<fileContentKey.size();j++){
                         jsonObject.put(fileContentKey.get(j).toString(),fileContent.getContentBody().get(i).get(j));
                     }
-                    jsonArray.put(i,jsonObject);
+                    jsonArray.put(i-1,jsonObject);
                 }
-                bufferedWriter.write(jsonArray.toString());
+                String jsonContent = jsonArray.toString();
+                jsonContent = jsonContent.replaceAll(",",",\n");
+                jsonContent = jsonContent.replaceAll("\\{","{\n");
+                jsonContent = jsonContent.replaceAll("}","\n}");
+                jsonContent = jsonContent.replaceAll("\\[","[\n");
+                jsonContent = jsonContent.replaceAll("]","\n]");
+                bufferedWriter.write(jsonContent);
                 System.out.println("json:"+jsonArray);
                 bufferedWriter.flush();
                 bufferedWriter.close();
