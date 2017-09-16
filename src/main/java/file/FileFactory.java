@@ -30,6 +30,10 @@ public class FileFactory {
             new FileExcelUtil(toFileName).writeFileContent(createFile(fromFileName).readFileContent());
         }else if (toFileName.endsWith("txt")){
             new FileTxtUtil(toFileName).writeFileContent(createFile(fromFileName).readFileContent());
+        }else if (toFileName.endsWith("json")){
+            new FileJsonUtil(toFileName).writeFileContent(createFile(fromFileName).readFileContent());
+        }else {
+
         }
     }
 }
