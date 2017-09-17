@@ -55,13 +55,13 @@ public class FileJsonUtil extends FileCommonUtil {
                     jsonArray.put(i-1,jsonObject);
                 }
                 String jsonContent = jsonArray.toString();
-                jsonContent = jsonContent.replaceAll(",",",\n");
-                jsonContent = jsonContent.replaceAll("\\{","{\n");
-                jsonContent = jsonContent.replaceAll("}","\n}");
+                jsonContent = jsonContent.replaceAll("\\{","{\n\t");
+                jsonContent = jsonContent.replaceAll("}","\n\t}");
                 jsonContent = jsonContent.replaceAll("\\[","[\n");
                 jsonContent = jsonContent.replaceAll("]","\n]");
+                jsonContent = jsonContent.replaceAll(",",",\n\t");
+                jsonContent = jsonContent.replaceFirst("\\{","\t{");
                 bufferedWriter.write(jsonContent);
-                System.out.println("json:"+jsonArray);
                 bufferedWriter.flush();
                 bufferedWriter.close();
 

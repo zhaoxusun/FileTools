@@ -112,11 +112,4 @@ public class FileXmlUtil extends FileCommonUtil {
         }
         return this;
     }
-    @Test
-    public void test(){
-        FileXmlUtil fileXmlUtil = new FileXmlUtil("test.xml");
-        //fileXmlUtil.getNodeList();
-        fileXmlUtil.readFileContent();
-
-    }
 }

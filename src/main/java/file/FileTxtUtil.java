@@ -92,10 +92,4 @@ public class FileTxtUtil extends FileCommonUtil {
 
         return this;
     }
-
-
-    public static void main(String[] args) {
-        new FileTxtUtil("testdd.txt").readFileContent();
-    }
-
 }
