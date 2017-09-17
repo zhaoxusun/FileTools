@@ -169,11 +169,4 @@ public class FileExcelUtil extends FileCommonUtil{
         return fileContent;
     }
 
-
-
-    public static void main(String[] args) {
-
-
-    }
-
 }
