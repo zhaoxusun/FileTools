@@ -3,11 +3,8 @@ package file;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 
 /**
  * Created by zhaoxu on 2017/7/6.
@@ -24,7 +21,61 @@ public class FileJsonUtil extends FileCommonUtil {
 
     @Override
     public FileContent readFileContent() {
-        return super.readFileContent();
+        if (new File(filePath + fileName).exists()) {
+
+        }else {
+            try {
+                new File(filePath+fileName).createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if (fileName.endsWith("json")) {
+            try {
+                FileReader fileReader = new FileReader(new File(filePath+fileName));
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                try {
+                    String jsonContent = "";
+                    String jsonContentTemp = null;
+                    while ((jsonContentTemp = bufferedReader.readLine())!=null) {
+                        jsonContent = jsonContent + jsonContentTemp.replaceAll("\t","");
+                    }
+                    //--------------------------------jsonContent为json串－－－－－－－－－－－－－－－－－
+                    ArrayList arrayKeyList ;
+                    ArrayList arrayList ;
+                    JSONArray jsonArray = new JSONArray(jsonContent);
+                    JSONObject jsonObject = new JSONObject();
+
+                    jsonObject = jsonArray.getJSONObject(0);
+                    arrayKeyList = new ArrayList();
+                    Set<String> jsonObjectKeySet = jsonObject.keySet();
+                    for (String string:jsonObjectKeySet){
+                        arrayKeyList.add(string);
+                    }
+                    fileContent.addContentBodyInfo(0,arrayKeyList);
+
+                    for (int i=0;i<jsonArray.length();i++){
+                        arrayList = new ArrayList();
+                        jsonObject = jsonArray.getJSONObject(i);
+                        Iterator iterator = jsonObjectKeySet.iterator();
+                        while (iterator.hasNext()){
+                            arrayList.add(jsonObject.get(iterator.next().toString()));
+                        }
+                        fileContent.addContentBodyInfo(i+1,arrayList);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    bufferedReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return fileContent;
     }
 
     @Override

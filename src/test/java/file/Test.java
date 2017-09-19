@@ -8,7 +8,7 @@ public class Test {
     public void testFileUtil(){
         FileFactory fileFactory = new FileFactory();
 
-        fileFactory.transformFile("test2.xml","test.json");
+        fileFactory.transformFile("test.json","test.xls");
         //fileFactory.transformFile("test.xml","test2.xml");
 
 
