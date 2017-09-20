@@ -11,23 +11,23 @@
 
 ### The file style is following:
 
-> txt
+> txt file style   
 >
 > ![txt](image/txt.png)
 >
-> xml
+> xml file style   
 >
 > ![txt](image/xml.png)
 >
-> json
+> json file style   
 >
 > ![txt](image/json.png)
 >
-> xls
+> xls file style   
 >
 > ![txt](image/xls.png)
 >
-> xlsx
+> xlsx file style   
 >
 > ![txt](image/xlsx.png)
 >
