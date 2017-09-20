@@ -9,22 +9,11 @@ import java.util.List;
  */
 public class Test {
 
+    @org.testng.annotations.Test
     public void testFileUtil(){
         FileFactory fileFactory = new FileFactory();
-
+        //tool's entry
         fileFactory.transformFile("test.txt","test.json");
-        //fileFactory.transformFile("test.xml","test2.xml");
-
-
-    }
-
-    public static void main(String [] args){
-
-        new Test().testFileUtil();
-//        String contentByRowObject = "aa\tbb\tcc\tdd\tee";
-//        String [] contentByRow = contentByRowObject.split("\\t");
-//        System.out.println(contentByRow[0]);
-
     }
 }
 
