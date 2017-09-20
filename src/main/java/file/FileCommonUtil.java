@@ -20,10 +20,12 @@ public class FileCommonUtil extends FileUtil{
 
 
     public FileContent readFileContent() {
+        System.out.println("File type is not support,please ensure Filetype is one of txt,xls,xlsx,json,xml.");
         return null;
     }
 
     public FileUtil writeFileContent(FileContent fileContent) {
+        System.out.println("File type is not support,please ensure Filetype is one of txt,xls,xlsx,json,xml.");
         return null;
     }
 

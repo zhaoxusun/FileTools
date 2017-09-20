@@ -33,7 +33,7 @@ public class FileFactory {
         }else if (toFileName.endsWith("json")){
             new FileJsonUtil(toFileName).writeFileContent(createFile(fromFileName).readFileContent());
         }else {
-
+            new FileCommonUtil(toFileName).writeFileContent(createFile(fromFileName).readFileContent());
         }
     }
 }
