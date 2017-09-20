@@ -11,8 +11,13 @@
 
 ### The file style is following:
 
-![txt](image/txt.png)
-![txt](image/xml.png)
-![txt](image/json.png)
-![txt](image/xls.png)
-![txt](image/xlsx.png)
+> ![txt](image/txt.png)
+>
+> ![txt](image/xml.png)
+>
+> ![txt](image/json.png)
+>
+> ![txt](image/xls.png)
+>
+> ![txt](image/xlsx.png)
+
