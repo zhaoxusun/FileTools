@@ -1,12 +1,9 @@
 # FileTools
 
-Transform data of xml,txt,excel,json form each other.
 
-txt done
-
-excel(xls/xlsx) done
-
-json todo
-
-xml done
-
+The tool is used to transform data of different type file.
+* txt
+* xml
+* json
+* xls
+* xlsx
