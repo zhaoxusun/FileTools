@@ -32,12 +32,10 @@ public class FileXmlUtil extends FileCommonUtil {
         if (new File(filePath + fileName).exists()) {
 
         }else {
-            try {
-                new File(filePath+fileName).createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }if (fileName.endsWith("xml")) {
+            System.out.println("file not exist,please ensure file is exist at frist");
+            System.exit(0);
+        }
+        if (fileName.endsWith("xml")) {
             BaseXMLData xmlData = new BaseXMLData();
             Object[] contentKey = xmlData.getDataKey( filePath + this.fileName, 0);
             ArrayList contentKeyList = new ArrayList();
@@ -63,14 +61,14 @@ public class FileXmlUtil extends FileCommonUtil {
     }
     @Override
     public FileCommonUtil writeFileContent(FileContent fileContent) {
-        if (new File(filePath + fileName).exists()) {
-
-        }else {
-            try {
-                new File(filePath+fileName).createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        File tempFile = new File(filePath+fileName);
+        if (tempFile.exists()) {
+            tempFile.delete();
+        }
+        try {
+            new File(filePath+fileName).createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         if (fileName.endsWith("xml")) {
             FileWriter fileWriter = null;
