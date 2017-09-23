@@ -13,7 +13,7 @@ public class Test {
     public void testFileUtil(){
         FileFactory fileFactory = new FileFactory();
         //tool's entry
-        fileFactory.transformFile("test.txt","test.json");
+        fileFactory.transformFile("test.xls","test4.xlsx");
     }
 }
 

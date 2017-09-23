@@ -26,11 +26,18 @@ public class FileExcelUtil extends FileCommonUtil{
 
     @Override
     public FileCommonUtil writeFileContent(FileContent fileContent) {
+        File tempFile = new File(filePath+fileName);
+        if (tempFile.exists()) {
+            tempFile.delete();
+        }
         if (fileName.endsWith("xls")) {
             FileOutputStream out = null;
             HSSFWorkbook workbook = null;
             try {
-                workbook = new HSSFWorkbook(new FileInputStream(new File(filePath + fileName)));
+                workbook = new HSSFWorkbook();
+                out = new FileOutputStream(filePath+fileName);
+                HSSFSheet sheet = workbook.createSheet("test");
+                workbook.write(out);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -69,7 +76,10 @@ public class FileExcelUtil extends FileCommonUtil{
             XSSFSheet xssfSheet = null;
             FileOutputStream out = null;
             try {
-                xssfWorkbook = new XSSFWorkbook(new FileInputStream(new File(filePath + fileName)));
+                xssfWorkbook = new XSSFWorkbook();
+                out = new FileOutputStream(filePath+fileName);
+                xssfSheet = xssfWorkbook.createSheet("test");
+                xssfWorkbook.write(out);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -115,7 +125,8 @@ public class FileExcelUtil extends FileCommonUtil{
         if (new File(filePath+fileName).exists()) {
 
         }else {
-
+            System.out.println("file not exist,please ensure file is exist at frist");
+            System.exit(0);
         }
         if (fileName.endsWith("xls")) {
             Workbook book = null;
