@@ -24,7 +24,7 @@ public class FileJsonUtil extends FileCommonUtil {
         if (new File(filePath + fileName).exists()) {
 
         }else {
-            System.out.println("file not exist,please ensure file is exist at frist");
+            System.out.println("File not exist,please ensure file is exist at frist");
             System.exit(0);
         }
         if (fileName.endsWith("json")) {
