@@ -31,3 +31,27 @@
 >
 > ![txt](image/xlsx.png)
 >
+
+### The PO class field to MySql table structure：
+
+```
+public class PoTest{
+    private Integer id;
+    private String name;
+    private Integer age;
+    private Long createTime;
+}
+          | |
+          | |
+          | |
+          \  /
+           \/
+create table po_test (
+id	BIGINT	not null	primary key,
+name	VARCHAR	null	comment '',
+age	BIGINT	null	comment '',
+create_time	BIGINT	null	comment '',
+
+);
+```
+
