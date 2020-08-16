@@ -1,7 +1,9 @@
 package file;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+
+
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 import java.io.*;
 import java.util.*;
@@ -40,10 +42,8 @@ public class FileJsonUtil extends FileCommonUtil {
                     //--------------------------------jsonContent为json串－－－－－－－－－－－－－－－－－
                     ArrayList arrayKeyList ;
                     ArrayList arrayList ;
-                    JSONArray jsonArray = new JSONArray(jsonContent);
-                    JSONObject jsonObject = new JSONObject();
-
-                    jsonObject = jsonArray.getJSONObject(0);
+                    JSONArray jsonArray = JSONArray.parseArray(jsonContent);
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
                     arrayKeyList = new ArrayList();
                     Set<String> jsonObjectKeySet = jsonObject.keySet();
                     for (String string:jsonObjectKeySet){
@@ -51,7 +51,7 @@ public class FileJsonUtil extends FileCommonUtil {
                     }
                     fileContent.addContentBodyInfo(0,arrayKeyList);
 
-                    for (int i=0;i<jsonArray.length();i++){
+                    for (int i=0;i<jsonArray.size();i++){
                         arrayList = new ArrayList();
                         jsonObject = jsonArray.getJSONObject(i);
                         Iterator iterator = jsonObjectKeySet.iterator();
@@ -100,7 +100,7 @@ public class FileJsonUtil extends FileCommonUtil {
                     for (int j=0;j<fileContentKey.size();j++){
                         jsonObject.put(fileContentKey.get(j).toString(),fileContent.getContentBody().get(i).get(j));
                     }
-                    jsonArray.put(i-1,jsonObject);
+                    jsonArray.add(i-1,jsonObject);
                 }
                 String jsonContent = jsonArray.toString();
                 jsonContent = jsonContent.replaceAll("\\{","{\n\t");
